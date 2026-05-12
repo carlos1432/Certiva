@@ -1,0 +1,168 @@
+<div class="full-page-gradient">
+  <div class="d-flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar p-4">
+      <div class="text-center mb-5">
+        <img src="assets/logo.png" width="80" alt="Logo" class="mb-3">
+
+        <h4 class="fw-bold text-white">
+          Certiva
+        </h4>
+      </div>
+
+      <ul class="nav flex-column gap-2">
+        <li class="nav-item">
+          <a class="nav-link active-link">
+            Dashboard
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            Eventos
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            Certificados
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            Usuarios
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            Configuración
+          </a>
+        </li>
+        <li class="nav-item mt-4">
+      <button
+        class="btn btn-outline-light w-100"
+        (click)="logout()"
+      >
+        Cerrar sesión
+      </button>
+    </li>
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <div class="content-area flex-grow-1">
+      <!-- HEADER -->
+      <header class="topbar px-4 py-3 d-flex justify-content-between align-items-center">
+        <div>
+          <h3 class="text-white fw-bold mb-0">
+            Bienvenido Carlos 👋
+          </h3>
+
+          <small class="text-white-50">
+            Panel principal del sistema
+          </small>
+        </div>
+
+        <div class="user-box d-flex align-items-center gap-3">
+          <div class="text-end">
+            <p class="mb-0 text-white fw-semibold">
+              Carlos Forero
+            </p>
+
+            <small class="text-white-50">
+              Administrador
+            </small>
+          </div>
+          <img src="https://i.pravatar.cc/100" class="user-avatar" alt="User">
+        </div>
+      </header>
+
+      <!-- CONTENIDO -->
+      <div class="container-fluid p-4">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="dashboard-card p-4">
+              <h5 class="text-white">
+                Eventos
+              </h5>
+
+              <h1 class="fw-bold text-white">
+                12
+              </h1>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="dashboard-card p-4">
+              <h5 class="text-white">
+                Usuarios
+              </h5>
+
+              <h1 class="fw-bold text-white">
+                230
+              </h1>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="dashboard-card p-4">
+              <h5 class="text-white">
+                Certificados
+              </h5>
+
+              <h1 class="fw-bold text-white">
+                540
+              </h1>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TABLA -->
+        <div class="dashboard-card p-4 mt-4">
+
+          <h4 class="text-white mb-4">
+            Últimos eventos
+          </h4>
+
+          <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle">
+
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Angular Summit</td>
+                  <td>10/05/2026</td>
+                  <td>
+                    <span class="badge bg-success">
+                      Activo
+                    </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Bootcamp Java</td>
+                  <td>12/05/2026</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">
+                      Pendiente
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

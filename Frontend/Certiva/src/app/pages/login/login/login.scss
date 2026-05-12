@@ -1,0 +1,19 @@
+.full-page-gradient {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #122347, #1b4fdd);
+  color: white;
+}
+
+.login-card {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-control {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+}

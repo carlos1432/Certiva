@@ -1,0 +1,27 @@
+<h2>Roles</h2>
+
+<!-- FORMULARIO CREAR -->
+<div>
+  <input
+    type="text"
+    placeholder="Nombre"
+    [(ngModel)]="nuevoRol.nombre"
+  />
+
+  <input
+    type="text"
+    placeholder="Descripción"
+    [(ngModel)]="nuevoRol.descripcion"
+  />
+
+  <button (click)="crearRol()">Crear Rol</button>
+</div>
+
+<hr />
+
+<!-- LISTADO -->
+<ul>
+  <li *ngFor="let rol of roles">
+    <strong>{{ rol.nombre }}</strong> - {{ rol.descripcion }}
+  </li>
+</ul>
