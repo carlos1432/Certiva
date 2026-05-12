@@ -1,0 +1,86 @@
+
+/* ===== PALETA NUEVA ===== */
+
+/* INDIGO */
+.bg-indigo {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+/* ROSE (Hackatones) */
+.bg-rose {
+  background: linear-gradient(135deg, #e11d48, #fb7185);
+}
+
+/* TEAL (Ferias) */
+.bg-teal {
+  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+}
+
+/* ===== CARD ===== */
+.event-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  transition: all .3s ease;
+  min-height: 560px;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,.4);
+}
+
+/* ===== BANNER ===== */
+.event-banner {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-banner i {
+  font-size: 4rem;
+  color: white;
+  opacity: 0.9;
+}
+
+/* ===== PROGRESS ===== */
+.custom-progress {
+  height: 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+}
+
+.progress-bar {
+  border-radius: 20px;
+}
+
+/* ===== GENERAL DASHBOARD CARD ===== */
+.dashboard-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+
+$azul-800: #1e40af;
+$índigo-800: #3730a3;
+$púrpura-800: #5b21b6;
+
+/* CURSOS → AZUL 800 */
+.bg-azul-800 {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+}
+
+/* HACKATONES → ÍNDIGO 800 */
+.bg-indigo-800 {
+  background: linear-gradient(135deg, #3730a3, #4f46e5);
+}
+
+/* FERIAS → PÚRPURA 800 */
+.bg-purple-800 {
+  background: linear-gradient(135deg, #5b21b6, #7c3aed);
+}

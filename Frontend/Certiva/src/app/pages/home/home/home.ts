@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterOutlet,RouterLink,RouterLinkActive],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -12,9 +12,6 @@ export class Home {
   constructor(private router: Router) {}
 
   logout(): void {   
-
-    // Luego aquí borrarás token/localStorage
-
     this.router.navigate(['/login']);
   }
 
