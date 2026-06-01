@@ -1,0 +1,54 @@
+<div class="container-fluid pt-2">
+  <h2 class="text-white fw-bold mb-1">Inscripciones</h2>
+  <p class="text-white-50 mb-4">Inscripción de estudiantes a eventos</p>
+
+  <div class="dashboard-card p-4 mb-4">
+    <h5 class="text-white mb-3">Nueva inscripción</h5>
+    <div class="row g-3">
+      <div class="col-md-3">
+        <input class="form-control" placeholder="Estado" [(ngModel)]="nuevaInscripcion.estado" />
+      </div>
+      <div class="col-md-3">
+        <select class="form-control" [(ngModel)]="nuevaInscripcion.idUsuario">
+          @for (u of usuarios; track $index) {
+            <option [ngValue]="u.idUsuario ?? u.id">{{ u.nombres }} {{ u.apellidos }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control" [(ngModel)]="nuevaInscripcion.idEvento">
+          @for (e of eventos; track $index) {
+            <option [ngValue]="e.idEvento ?? e.id">{{ e.titulo }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-3 d-flex align-items-center">
+        <label class="text-white me-2">
+          <input type="checkbox" [(ngModel)]="nuevaInscripcion.pagoRealizado" />
+          Pago realizado
+        </label>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" (click)="crearInscripcion()">Inscribir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-card p-4">
+    <ul class="list-group list-group-flush">
+      @if (inscripciones.length === 0) {
+        <li class="list-group-item bg-transparent text-white-50">No hay inscripciones</li>
+      }
+      @for (ins of inscripciones; track $index) {
+        <li class="list-group-item bg-transparent text-white">
+          <strong>{{ ins.estado }}</strong>
+          — Usuario #{{ ins.idUsuario }}
+          — Evento #{{ ins.idEvento }}
+          @if (ins.pagoRealizado) {
+            <span class="badge bg-success ms-2">Pagado</span>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</div>

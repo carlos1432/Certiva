@@ -9,24 +9,45 @@
           <p class="text-center text-white-50 mb-4">
             Inicia sesión para continuar
           </p>
-          <form>
+          <form (ngSubmit)="iniciarSesion()">
             <div class="mb-3">
-              <p>Correo</p>
-              <input type="email" class="form-control" placeholder="username@gmail.com">
+              <p class="text-white mb-1">Correo</p>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="username@gmail.com"
+                [(ngModel)]="credenciales.correo"
+                name="correo"
+                required
+              />
             </div>
-            <p>contraseña</p>
+            <p class="text-white mb-1">Contraseña</p>
             <div class="mb-4">
-              <input type="password" class="form-control" placeholder="contraseña">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="contraseña"
+                [(ngModel)]="credenciales.contrasena"
+                name="contrasena"
+                required
+              />
             </div>
-            <p>Has olvidado tu contraseña?</p>
-            <button class="btn btn-primary w-100" routerLink="/home">
-              Iniciar sesión
+            @if (errorMensaje) {
+              <p class="text-danger small mb-3">{{ errorMensaje }}</p>
+            }
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="cargando"
+            >
+              {{ cargando ? 'Ingresando...' : 'Iniciar sesión' }}
             </button>
           </form>
 
-          <p class="mt-3 text-center">Todavía no tengo una cuenta?
+          <p class="mt-3 text-center text-white">
+            Todavía no tengo una cuenta?
             <a routerLink="/registrase" class="fw-bold text-white text-decoration-none">
-                Registrarse
+              Registrarse
             </a>
           </p>
         </div>
@@ -34,5 +55,3 @@
     </div>
   </div>
 </div>
-
-

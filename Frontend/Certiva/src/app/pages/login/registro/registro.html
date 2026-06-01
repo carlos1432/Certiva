@@ -7,62 +7,118 @@
             Crear Cuenta
           </h1>
 
-          <p class="text-white-50 mb-4 ">
+          <p class="text-white-50 mb-4">
             Únete a miles de estudiantes y organizadores en Certiva
           </p>
 
-          <form>
+          <form (ngSubmit)="crearCuenta()">
             <div class="row">
-              <!-- Columna izquierda -->
               <div class="col-md-6">
                 <div class="mb-3">
                   <label class="form-label text-white">Nombre(s)</label>
-                  <input type="text" class="form-control" placeholder="Juan">
-                </div>               
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Juan"
+                    [(ngModel)]="nuevoUsuario.nombres"
+                    name="nombres"
+                    required
+                  />
+                </div>
 
                 <div class="mb-3">
                   <label class="form-label text-white">Correo electrónico</label>
-                  <input type="email" class="form-control" placeholder="correo@gmail.com">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="correo@gmail.com"
+                    [(ngModel)]="nuevoUsuario.correo"
+                    name="correo"
+                    required
+                  />
                 </div>
 
-                <div class="mb-3"> 
+                <div class="mb-3">
                   <label class="form-label text-white">Tipo documento</label>
-                  <input type="email" class="form-control" placeholder="Cedula de Ciudadania">
+                  <select
+                    class="form-control"
+                    [(ngModel)]="nuevoUsuario.idTipoDocumento"
+                    name="idTipoDocumento"
+                    required
+                  >
+                    @for (tipo of tiposDocumento; track $index) {
+                      <option [ngValue]="tipo.idTipoDocumento ?? tipo.id">
+                        {{ tipo.nombre }}
+                      </option>
+                    }
+                  </select>
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label text-white">Número documento</label>
-                  <input type="email" class="form-control" placeholder="10000000">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="10000000"
+                    [(ngModel)]="nuevoUsuario.numeroDocumento"
+                    name="numeroDocumento"
+                    required
+                  />
                 </div>
               </div>
 
-              <!-- Columna derecha -->
               <div class="col-md-6">
-
                 <div class="mb-3">
                   <label class="form-label text-white">Apellidos</label>
-                  <input type="text" class="form-control" placeholder="Pérez">
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label text-white">Teléfono (opcional)</label>
-                  <input type="text" class="form-control" placeholder="300 123 4567">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Pérez"
+                    [(ngModel)]="nuevoUsuario.apellidos"
+                    name="apellidos"
+                    required
+                  />
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label text-white">Contraseña</label>
-                  <input type="password" class="form-control" placeholder="********">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="********"
+                    [(ngModel)]="nuevoUsuario.contrasena"
+                    name="contrasena"
+                    required
+                  />
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label text-white">Confirmar contraseña</label>
-                  <input type="password" class="form-control" placeholder="********">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="********"
+                    [(ngModel)]="confirmarContrasena"
+                    name="confirmarContrasena"
+                    required
+                  />
                 </div>
               </div>
             </div>
 
-            <button class="btn btn-primary w-100 mt-3">
-              Crear cuenta
+            @if (errorMensaje) {
+              <p class="text-danger small">{{ errorMensaje }}</p>
+            }
+            @if (exitoMensaje) {
+              <p class="text-success small">{{ exitoMensaje }}</p>
+            }
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100 mt-3"
+              [disabled]="cargando"
+            >
+              {{ cargando ? 'Creando cuenta...' : 'Crear cuenta' }}
             </button>
           </form>
 

@@ -13,12 +13,48 @@
       </p>
     </div>
 
-    <button class="btn btn-primary px-4">
+    <button class="btn btn-primary px-4" (click)="mostrarFormulario = !mostrarFormulario">
       <i class="bi bi-plus-circle me-2"></i>
       Nuevo Evento
     </button>
 
   </div>
+
+  @if (mostrarFormulario) {
+    <div class="dashboard-card p-4 mb-4">
+      <h5 class="text-white mb-3">Crear evento</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Título" [(ngModel)]="nuevoEvento.titulo" />
+        </div>
+        <div class="col-md-6">
+          <select class="form-control" [(ngModel)]="nuevoEvento.idTipoEvento">
+            @for (tipo of tiposEvento; track $index) {
+              <option [ngValue]="tipo.idTipoEvento ?? tipo.id">{{ tipo.nombre }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-12">
+          <input class="form-control" placeholder="Descripción" [(ngModel)]="nuevoEvento.descripcion" />
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="number" placeholder="Costo" [(ngModel)]="nuevoEvento.costo" />
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="number" placeholder="Cupos" [(ngModel)]="nuevoEvento.cupos" />
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="datetime-local" [(ngModel)]="nuevoEvento.fechaInicio" />
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="datetime-local" [(ngModel)]="nuevoEvento.fechaFin" />
+        </div>
+        <div class="col-12">
+          <button class="btn btn-success" (click)="crearEvento()">Guardar evento</button>
+        </div>
+      </div>
+    </div>
+  }
 
   <!-- CARDS -->
   <div class="row g-5 justify-content-center mt-4">
@@ -42,7 +78,7 @@
             </div>
 
             <span class="badge bg-azul-800 px-3 py-2">
-              18
+              {{ conteoCursos }}
             </span>
 
           </div>
@@ -94,7 +130,7 @@
             </div>
 
             <span class="badge bg-indigo-800 px-3 py-2">
-              6
+              {{ conteoHackatones }}
             </span>
 
           </div>
@@ -146,7 +182,7 @@
             </div>
 
             <span class="badge bg-purple-800 px-3 py-2">
-              10
+              {{ conteoFerias }}
             </span>
 
           </div>
@@ -179,6 +215,45 @@
 
     </div>
 
+  </div>
+
+  <div class="dashboard-card p-4 mt-5">
+    <h4 class="text-white mb-4">Listado de eventos</h4>
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Cupos</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (eventos.length === 0) {
+            <tr>
+              <td colspan="5" class="text-center text-white-50">No hay eventos</td>
+            </tr>
+          }
+          @for (evento of eventos; track $index) {
+            <tr>
+              <td>{{ evento.titulo }}</td>
+              <td>{{ formatearFecha(evento.fechaInicio) }}</td>
+              <td>{{ formatearFecha(evento.fechaFin) }}</td>
+              <td>{{ evento.cupos }}</td>
+              <td>
+                @if (evento.estado) {
+                  <span class="badge bg-success">Activo</span>
+                } @else {
+                  <span class="badge bg-secondary">Inactivo</span>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

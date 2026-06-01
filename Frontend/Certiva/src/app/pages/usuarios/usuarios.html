@@ -1,1 +1,88 @@
-<p>usuarios works!</p>
+<div class="container-fluid pt-2">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="text-white fw-bold mb-1">Usuarios</h2>
+      <p class="text-white-50 mb-0">Administra Admin, Profesor, Estudiante y Monitor</p>
+    </div>
+    <button class="btn btn-primary px-4" (click)="mostrarFormulario = !mostrarFormulario">
+      <i class="bi bi-plus-circle me-2"></i>
+      Nuevo usuario
+    </button>
+  </div>
+
+  @if (mostrarFormulario) {
+    <div class="dashboard-card p-4 mb-4">
+      <h5 class="text-white mb-3">Crear usuario</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Nombres" [(ngModel)]="nuevoUsuario.nombres" />
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Apellidos" [(ngModel)]="nuevoUsuario.apellidos" />
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Correo" [(ngModel)]="nuevoUsuario.correo" />
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Número documento" [(ngModel)]="nuevoUsuario.numeroDocumento" />
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="password" placeholder="Contraseña" [(ngModel)]="nuevoUsuario.contrasena" />
+        </div>
+        <div class="col-md-3">
+          <select class="form-control" [(ngModel)]="nuevoUsuario.idTipoDocumento">
+            @for (tipo of tiposDocumento; track $index) {
+              <option [ngValue]="tipo.idTipoDocumento ?? tipo.id">{{ tipo.nombre }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-control" [(ngModel)]="nuevoUsuario.idRol">
+            @for (rol of roles; track $index) {
+              <option [ngValue]="rol.idRol ?? rol.id">{{ rol.nombre }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-success" (click)="crearUsuario()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="dashboard-card p-4">
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Documento</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (usuarios.length === 0) {
+            <tr>
+              <td colspan="4" class="text-center text-white-50">No hay usuarios</td>
+            </tr>
+          }
+          @for (usuario of usuarios; track $index) {
+            <tr>
+              <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+              <td>{{ usuario.correo }}</td>
+              <td>{{ usuario.numeroDocumento }}</td>
+              <td>
+                @if (usuario.estado) {
+                  <span class="badge bg-success">Activo</span>
+                } @else {
+                  <span class="badge bg-secondary">Inactivo</span>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

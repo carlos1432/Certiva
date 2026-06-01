@@ -1,0 +1,47 @@
+<div class="container-fluid pt-2">
+  <h2 class="text-white fw-bold mb-1">Certificados</h2>
+  <p class="text-white-50 mb-4">Emisión y validación de certificados</p>
+
+  <div class="dashboard-card p-4 mb-4">
+    <h5 class="text-white mb-3">Crear certificado</h5>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <input class="form-control" placeholder="Tipo certificado" [(ngModel)]="nuevoCertificado.tipoCertificado" />
+      </div>
+      <div class="col-md-4">
+        <input class="form-control" placeholder="Código validación" [(ngModel)]="nuevoCertificado.codigoValidacion" />
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" [(ngModel)]="nuevoCertificado.idUsuario">
+          @for (u of usuarios; track $index) {
+            <option [ngValue]="u.idUsuario ?? u.id">{{ u.nombres }} {{ u.apellidos }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" [(ngModel)]="nuevoCertificado.idEvento">
+          @for (e of eventos; track $index) {
+            <option [ngValue]="e.idEvento ?? e.id">{{ e.titulo }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" (click)="crearCertificado()">Crear certificado</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-card p-4">
+    <ul class="list-group list-group-flush">
+      @if (certificados.length === 0) {
+        <li class="list-group-item bg-transparent text-white-50">No hay certificados</li>
+      }
+      @for (cert of certificados; track $index) {
+        <li class="list-group-item bg-transparent text-white">
+          <strong>{{ cert.tipoCertificado }}</strong> — {{ cert.codigoValidacion }}
+          <small class="text-white-50 d-block">Usuario #{{ cert.idUsuario }} · Evento #{{ cert.idEvento }}</small>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

@@ -32,6 +32,24 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/roles" routerLinkActive="active-link">
+            Roles
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/certificados" routerLinkActive="active-link">
+            Certificados
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/inscripciones" routerLinkActive="active-link">
+            Inscripciones
+          </a>
+        </li>
+
         <!-- <li class="nav-item">
           <a
             class="nav-link"
@@ -57,7 +75,7 @@
       <header class="topbar px-4 py-3 d-flex justify-content-between align-items-center">
         <div>
           <h3 class="text-white fw-bold mb-0">
-            Bienvenido Carlos 👋
+            Bienvenido {{ usuario?.nombres ?? 'Usuario' }} 👋
           </h3>
 
           <small class="text-white-50">
@@ -68,11 +86,11 @@
         <div class="user-box d-flex align-items-center gap-3">
           <div class="text-end">
             <p class="mb-0 text-white fw-semibold">
-              Carlos Forero
+              {{ usuario?.nombres }}
             </p>
 
             <small class="text-white-50">
-              Administrador
+              {{ usuario?.rol }}
             </small>
           </div>
           <img src="https://i.pravatar.cc/100" class="user-avatar" alt="User">

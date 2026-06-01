@@ -1,27 +1,42 @@
-<h2>Roles</h2>
+<div class="container-fluid pt-2">
+  <h2 class="text-white fw-bold mb-1">Roles</h2>
+  <p class="text-white-50 mb-4">Admin, Profesor, Estudiante y Monitor</p>
 
-<!-- FORMULARIO CREAR -->
-<div>
-  <input
-    type="text"
-    placeholder="Nombre"
-    [(ngModel)]="nuevoRol.nombre"
-  />
+  <div class="dashboard-card p-4 mb-4">
+    <h5 class="text-white mb-3">Crear rol</h5>
+    <div class="row g-3">
+      <div class="col-md-5">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          [(ngModel)]="nuevoRol.nombre"
+        />
+      </div>
+      <div class="col-md-5">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Descripción"
+          [(ngModel)]="nuevoRol.descripcion"
+        />
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" (click)="crearRol()">Crear</button>
+      </div>
+    </div>
+  </div>
 
-  <input
-    type="text"
-    placeholder="Descripción"
-    [(ngModel)]="nuevoRol.descripcion"
-  />
-
-  <button (click)="crearRol()">Crear Rol</button>
+  <div class="dashboard-card p-4">
+    <ul class="list-group list-group-flush">
+      @if (roles.length === 0) {
+        <li class="list-group-item bg-transparent text-white-50">No hay roles</li>
+      }
+      @for (rol of roles; track $index) {
+        <li class="list-group-item bg-transparent text-white">
+          <strong>{{ rol.nombre }}</strong> — {{ rol.descripcion }}
+        </li>
+      }
+    </ul>
+  </div>
 </div>
-
-<hr />
-
-<!-- LISTADO -->
-<ul>
-  <li *ngFor="let rol of roles">
-    <strong>{{ rol.nombre }}</strong> - {{ rol.descripcion }}
-  </li>
-</ul>
